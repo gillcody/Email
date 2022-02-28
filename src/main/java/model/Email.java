@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 /**
@@ -11,8 +12,10 @@ public class Email {
     private String password;
     private int passwordLength = 10;
     private String department;
-    private int mailboxCap;
+    private int mailboxCap = 1000;
+    private String email;
     private String altEmail;
+    private String companySuffix = "googill.com";
 
     public Email() {
         super();
@@ -28,15 +31,34 @@ public class Email {
         this.lastName = lastName;
         System.out.println("First Name: " + firstName + "\tLast Name: " + lastName);
 
+        //Setup the department
         this.department = setDepartment();
         System.out.println("Department: " + this.department);
 
+        //Setup the password
         this.password = generatePassword(passwordLength);
         System.out.println("Password: " + password);
+
+        //Setup the email
+        email = firstName.toLowerCase(Locale.ROOT) + "." + lastName.toLowerCase(Locale.ROOT) +  "@" + department.toLowerCase(Locale.ROOT) + "." + companySuffix;
+        System.out.println("User email: " + email);
     }
 
-    private String getDepartment() {
-        return department;
+    /**
+     * Generates a random password for the user
+     * @param length
+     * @return
+     */
+    private String generatePassword(int length) {
+        String passwordSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_";
+        char[] password = new char[length];
+
+        for(int i = 0; i < length; i++) {
+            int rand = (int)Math.random() * passwordSet.length();
+            password[i] = passwordSet.charAt(rand);
+        }
+
+        return new String(password);
     }
 
     /**
@@ -67,15 +89,11 @@ public class Email {
         }
     }
 
-    private String generatePassword(int length) {
-        String passwordSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_";
-        char[] password = new char[length];
-
-        for(int i = 0; i < length; i++) {
-            int rand = (int)Math.random() * passwordSet.length();
-            password[i] = passwordSet.charAt(rand);
-        }
-
-        return new String(password);
+    /**
+     * Get Department
+     * @return
+     */
+    private String getDepartment() {
+        return department;
     }
 }
