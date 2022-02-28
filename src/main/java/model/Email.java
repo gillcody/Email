@@ -29,19 +29,16 @@ public class Email {
     public Email(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        System.out.println("First Name: " + firstName + "\tLast Name: " + lastName);
 
         //Setup the department
         this.department = setDepartment();
-        System.out.println("Department: " + this.department);
 
         //Setup the password
         this.password = generatePassword(passwordLength);
-        System.out.println("Password: " + password);
+        System.out.println("PASSWORD: " + password);
 
         //Setup the email
         email = firstName.toLowerCase(Locale.ROOT) + "." + lastName.toLowerCase(Locale.ROOT) +  "@" + department.toLowerCase(Locale.ROOT) + "." + companySuffix;
-        System.out.println("User email: " + email);
     }
 
     /**
@@ -61,6 +58,16 @@ public class Email {
         return new String(password);
     }
 
+    public String showInfo() {
+        return "DISPLAY NAME: " + firstName + " " + lastName +
+                "\nCOMPANY EMAIL: " + getEmail() +
+                "\nMAILBOX CAPACITY: " + getMailboxCap();
+    }
+
+    /**
+     *
+     * @param password
+     */
     public void changePassword(String password) {
         this.password = password;
     }
