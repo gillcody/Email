@@ -61,9 +61,12 @@ public class Email {
         return new String(password);
     }
 
+    public void changePassword(String password) {
+        this.password = password;
+    }
+
     /**
-     * Set the department
-     * @return
+     * Setters
      */
     private String setDepartment() {
         System.out.print("Please enter your department\n" +
@@ -89,11 +92,78 @@ public class Email {
         }
     }
 
+    public void setMailboxCap(int cap) {
+        this.mailboxCap = cap;
+    }
+
+    public void setAltEmail(String altEmail) {
+        this.altEmail = altEmail;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setPasswordLength(int passwordLength) {
+        this.passwordLength = passwordLength;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setCompanySuffix(String companySuffix) {
+        this.companySuffix = companySuffix;
+    }
+
     /**
-     * Get Department
-     * @return
+     * Getters
      */
     private String getDepartment() {
         return department;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public int getPasswordLength() {
+        return passwordLength;
+    }
+
+    public int getMailboxCap() {
+        return mailboxCap;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getAltEmail() {
+        return altEmail;
+    }
+
+    public String getCompanySuffix() {
+        return companySuffix;
     }
 }
